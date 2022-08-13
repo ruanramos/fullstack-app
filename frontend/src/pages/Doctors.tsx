@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import DoctorForm from "../components/DoctorForm";
 import type { Doctor } from '../types/Doctor';
 
 
@@ -18,15 +19,22 @@ const Doctors = () => {
         });
     }, []);
 
+    
+
     return (
         <div className="container">
             <h2>Doctors</h2>
-            <div className="row">
-                {doctors.map(doctor => (
-                    <div key={doctor.id}>
-                        <Card doctor={doctor} />
-                    </div>
-                ))}
+            <div className="main-content">
+                <div className="row">
+                    {doctors.map(doctor => (
+                        <div key={doctor.id}>
+                            <Card doctor={doctor} />
+                        </div>
+                    ))}
+                </div>
+                <div className="">
+                    <DoctorForm />
+                </div>
             </div>
         </div>
     );

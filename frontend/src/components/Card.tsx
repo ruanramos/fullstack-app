@@ -1,4 +1,5 @@
 import type { Doctor } from '../types/Doctor';
+import CardActions from './CardActions';
 
 type CardProps = {
     doctor: Doctor;
@@ -7,9 +8,13 @@ type CardProps = {
 const Card = ({ doctor }: CardProps) => {
     return (
         <div className="col-md-4">
+
             <div className="card text-center">
+
                 <div className="card-header">
+                    
                     <h3>{doctor.name}</h3>
+                    <CardActions />
                 </div>
                 <div className="card-body">
                     <p>{doctor.specialty}</p>

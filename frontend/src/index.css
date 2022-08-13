@@ -102,7 +102,7 @@ form button {
   cursor: pointer;
 }
 
-div.error {
+.error {
   padding: 10px;
   background: #ffefef;
   border: 1px solid var(--error);
@@ -124,4 +124,27 @@ div.error {
 
 .card:hover {
   background: #f34fa791;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 50px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card-action {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
