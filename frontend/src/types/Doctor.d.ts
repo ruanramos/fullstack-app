@@ -1,5 +1,5 @@
 export type Doctor = {
-    id: number,
+    _id: number,
     name: string,
     specialty: string,
     address: string,

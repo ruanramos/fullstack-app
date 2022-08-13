@@ -19,15 +19,13 @@ const Doctors = () => {
         });
     }, []);
 
-    
-
     return (
         <div className="container">
             <h2>Doctors</h2>
             <div className="main-content">
                 <div className="row">
                     {doctors.map(doctor => (
-                        <div key={doctor.id}>
+                        <div key={doctor._id}>
                             <Card doctor={doctor} />
                         </div>
                     ))}
