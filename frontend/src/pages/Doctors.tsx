@@ -23,7 +23,7 @@ const Doctors = () => {
         <div className="container">
             <h2>Doctors</h2>
             <div className="main-content">
-                <div className="row">
+                <div>
                     {doctors.map(doctor => (
                         <div key={doctor._id}>
                             <Card doctor={doctor} />
