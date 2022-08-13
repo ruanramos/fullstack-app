@@ -57,7 +57,7 @@ const DoctorForm = () => {
 
 
     return (
-        <div>
+        <div className="doctor-form">
             <h2>Add new doctor</h2>
             <form onSubmit={handleSubmit}>
                 {error && <p className="error">{error}</p>}
