@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { Dispatch, useEffect } from "react";
 import Card from "../components/Card";
 import DoctorForm from "../components/DoctorForm";
-import type { Doctor } from '../types/Doctor';
+import useDoctorsContext from "../hooks/useDoctorsContext";
+import { Doctor } from "../types/Doctor";
 
 
 const fetchDoctors = async () => {
@@ -11,11 +12,11 @@ const fetchDoctors = async () => {
 }
 
 const Doctors = () => {
-    const [doctors, setDoctors] = useState<Doctor[]>([]);
+    const { doctors, dispatch } : {doctors: Doctor[], dispatch: Dispatch<any>} = useDoctorsContext();
 
     useEffect(() => {
         fetchDoctors().then(data => {
-            setDoctors(data);
+            dispatch({ type: 'SET_DOCTORS', payload: data });
         });
     }, []);
 

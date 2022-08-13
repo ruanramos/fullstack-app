@@ -1,7 +1,10 @@
 import { useState } from "react";
+import useDoctorsContext from "../hooks/useDoctorsContext";
 
 
 const DoctorForm = () => {
+    const { dispatch } = useDoctorsContext();
+
     const [name, setName] = useState('')
     const [specialty, setSpecialty] = useState('')
     const [address, setAddress] = useState('')
@@ -25,7 +28,6 @@ const DoctorForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.errors) {
                     setError(data.message)
                 } else {
@@ -34,6 +36,7 @@ const DoctorForm = () => {
                     setSpecialty('')
                     setAddress('')
                     setPhone('')
+                    dispatch({ type: 'ADD_DOCTOR', payload: data })
                 }
             })
 
@@ -60,19 +63,19 @@ const DoctorForm = () => {
                 {error && <p className="error">{error}</p>}
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={handleNameChange} />
+                    <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={handleNameChange} value={name} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="specialization">Specialization</label>
-                    <input type="text" className="form-control" id="specialization" placeholder="Enter specialization" onChange={handleSpecialtyChange} />
+                    <input type="text" className="form-control" id="specialization" placeholder="Enter specialization" onChange={handleSpecialtyChange} value={specialty} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="phone">Phone</label>
-                    <input type="text" className="form-control" id="phone" placeholder="Enter phone" onChange={handlePhoneChange} />
+                    <input type="text" className="form-control" id="phone" placeholder="Enter phone" onChange={handlePhoneChange} value={phone} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="address">Address</label>
-                    <input type="text" className="form-control" id="address" placeholder="Enter address" onChange={handleAddressChange} />
+                    <input type="text" className="form-control" id="address" placeholder="Enter address" onChange={handleAddressChange} value={address} />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

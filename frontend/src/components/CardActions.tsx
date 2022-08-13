@@ -1,8 +1,11 @@
 import { faTrash, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useDoctorsContext from '../hooks/useDoctorsContext';
 import type { Doctor } from '../types/Doctor';
 
 const CardActions = ({ doctor }: { doctor: Doctor }) => {
+
+    const {dispatch} = useDoctorsContext();
 
     const handleDelete = async () => {
         await fetch(`/api/doctors/${doctor._id}`, {
@@ -13,7 +16,11 @@ const CardActions = ({ doctor }: { doctor: Doctor }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.errors) {
+                    console.log(data.message)
+                } else {
+                    dispatch({ type: 'DELETE_DOCTOR', payload: data });
+                }
             })
     }
 
