@@ -5,6 +5,7 @@
 :root {
   --primary: #1aac83;
   --error: #e7195a;
+  --action: #526cff;
 }
 
 body {
@@ -118,8 +119,6 @@ form button {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-
-
 }
 
 .card:hover {
@@ -147,4 +146,14 @@ form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card-action button {
+  background: var(--action);
+  border: 0;
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: max-content;
 }
