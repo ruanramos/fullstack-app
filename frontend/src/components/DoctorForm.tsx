@@ -11,10 +11,9 @@ const DoctorForm = () => {
     const [phone, setPhone] = useState('')
     const [error, setError] = useState<any>(null)
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (name == '' || specialty == '' || phone == '') {
+        if (name === '' || specialty === '' || phone === '') {
             setError('Required fields cannot be empty')
             return
         }

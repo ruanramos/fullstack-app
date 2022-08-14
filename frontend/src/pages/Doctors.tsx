@@ -12,13 +12,13 @@ const fetchDoctors = async () => {
 }
 
 const Doctors = () => {
-    const { doctors, dispatch } : {doctors: Doctor[], dispatch: Dispatch<any>} = useDoctorsContext();
+    const { doctors, dispatch }: { doctors: Doctor[], dispatch: Dispatch<any> } = useDoctorsContext();
 
     useEffect(() => {
         fetchDoctors().then(data => {
             dispatch({ type: 'SET_DOCTORS', payload: data });
         });
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="container">

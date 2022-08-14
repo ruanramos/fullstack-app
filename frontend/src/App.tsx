@@ -4,11 +4,11 @@ import Doctors from './pages/Doctors';
 import Home from './pages/Home';
 
 function App() {
+
   return (
     <div className="App">
-      
       <Router>
-      <Navbar />
+        <Navbar />
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
