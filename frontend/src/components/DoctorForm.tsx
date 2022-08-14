@@ -65,7 +65,6 @@ const DoctorForm = () => {
         <div className="doctor-form">
             <h2>Add new doctor</h2>
             <form onSubmit={handleSubmit}>
-                {error && <p className="error">{error}</p>}
                 <div className="form-group">
                     <label htmlFor="name">Name*</label>
                     <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={handleNameChange} value={name} />
@@ -84,6 +83,7 @@ const DoctorForm = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            {error && <p className="error">{error}</p>}
         </div>
     );
 }
