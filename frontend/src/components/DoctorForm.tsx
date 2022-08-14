@@ -9,11 +9,15 @@ const DoctorForm = () => {
     const [specialty, setSpecialty] = useState('')
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
-    const [error, setError] = useState(null)
+    const [error, setError] = useState<any>(null)
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if (name == '' || specialty == '' || phone == '') {
+            setError('Required fields cannot be empty')
+            return
+        }
         await fetch('/api/doctors', {
             method: 'POST',
             headers: {
@@ -32,6 +36,7 @@ const DoctorForm = () => {
                     setError(data.message)
                 } else {
                     console.log(data)
+                    setError(null)
                     setName('')
                     setSpecialty('')
                     setAddress('')
@@ -62,15 +67,15 @@ const DoctorForm = () => {
             <form onSubmit={handleSubmit}>
                 {error && <p className="error">{error}</p>}
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name*</label>
                     <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={handleNameChange} value={name} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="specialization">Specialization</label>
+                    <label htmlFor="specialization">Specialization*</label>
                     <input type="text" className="form-control" id="specialization" placeholder="Enter specialization" onChange={handleSpecialtyChange} value={specialty} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
+                    <label htmlFor="phone">Phone*</label>
                     <input type="text" className="form-control" id="phone" placeholder="Enter phone" onChange={handlePhoneChange} value={phone} />
                 </div>
                 <div className="form-group">
