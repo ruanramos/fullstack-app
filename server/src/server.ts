@@ -18,6 +18,7 @@ app.use((req: Request, res: Response, next: any) => {
 });
 
 app.use('/api/doctors', doctorsRoutes);
+app.use('/api/users', usersRoutes);
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
     console.log('Connected to MongoDB');
